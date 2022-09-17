@@ -15,9 +15,10 @@ knitr::opts_chunk$set(
 # ```tlemix```
 
 <!-- badges: start -->
-[![CRAN version](https://www.r-pkg.org/badges/version/fsdaR)](https://cran.r-project.org/package=tlemix)
-[![downloads](https://cranlogs.r-pkg.org/badges/fsdaR)](https://cran.r-project.org/package=tlemix)
+[![CRAN version](https://www.r-pkg.org/badges/version/tlemix)](https://cran.r-project.org/package=tlemix)
+[![downloads](https://cranlogs.r-pkg.org/badges/tlemix)](https://cran.r-project.org/package=tlemix)
 [![license](https://img.shields.io/badge/license-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
+[![R-CMD-check](https://github.com/valentint/tlemix/workflows/R-CMD-check/badge.svg)](https://github.com/valentint/tlemix/actions)
 <!-- badges: end -->
 
 
