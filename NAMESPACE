@@ -1,0 +1,31 @@
+import(methods)
+importFrom("graphics", "legend")
+importFrom("stats", "dbinom", "dnorm", "dpois", "model.frame", "model.matrix", "model.response")
+importFrom("mvtnorm", "dmvnorm")
+
+
+#importFrom("graphics",plot)
+importFrom("flexmix", "flexmix", "FLXmclust", "FLXglm", "parameters")
+
+export(
+	coefglm,
+	coefmclust,
+	flexmix.Density,
+	flexmix.Estimate,
+	FLXmclust.Density,
+	FLXmclust.Estimate
+      )
+
+exportClasses(
+		TLE,
+		summary.TLE
+	     )
+
+exportMethods(
+		tleplot,
+		TLE,
+		summary,
+		show,
+		plot,
+		estimate
+	     )

@@ -1,0 +1,102 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "README-"
+)
+```
+
+# ```tlemix```
+
+<!-- badges: start -->
+[![CRAN version](https://www.r-pkg.org/badges/version/fsdaR)](https://cran.r-project.org/package=tlemix)
+[![downloads](https://cranlogs.r-pkg.org/badges/fsdaR)](https://cran.r-project.org/package=tlemix)
+[![license](https://img.shields.io/badge/license-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
+<!-- badges: end -->
+
+
+The package `tlemix` implements a general framework for robustly fitting
+discrete mixtures of regression models in the `R` statistical
+computing environment. It implements the FAST-TLE algorithm
+and uses the `R` package `FlexMix` as a computational engine for
+fitting mixtures of general linear models (GLMs) and 
+model-based clustering in R.
+
+    
+## Installation
+
+The `tlemix` package is on CRAN (The Comprehensive R Archive Network) and the latest release can be easily installed using the command
+
+```
+install.packages("tlemix")
+```
+
+## Building from source
+
+To install the latest stable development version from GitHub, you can pull this repository and install it using
+
+```
+## install.packages("remotes")
+remotes::install_github("valentint/tlemix")
+```
+
+Of course, if you have already installed `remotes`, you can skip the first line (I have commented it out).  
+
+## Example
+
+This are three basic examples which show you if the package is properly installed:
+
+```{r example1}
+library(tlemix)
+
+##  Mixture of two standard normal distributions with outliers.
+
+data(gaussData)
+str(gaussData)
+
+## The example needs some computing time:
+
+## estimate
+est.tle <- TLE(y~x,"gaussian",data=gaussData,Density=flexmix.Density,
+           Estimate=flexmix.Estimate,msglvl=1,nc=2,class="hard")
+
+## plot data indicating clusters
+tleplot(est.tle,gaussData,main="TLE Scatter Plot")
+
+```
+```{r example2}
+library(tlemix)
+
+##  Mixture of two standard normal distributions
+
+data(McLachlan150)
+str(McLachlan150)
+
+## Th example needs some computing time:
+d <- as.matrix(McLachlan150[,1:2])
+est.tle <- TLE(d~1,"mvtnormal",data=d,Density=FLXmclust.Density,
+           Estimate=FLXmclust.Estimate,msglvl=1,nc=3,class="hard")
+tleplot(est.tle,as.data.frame(d),main="TLE Scatter Plot")
+
+```
+
+```{r example3}
+library(tlemix)
+
+##  Mixture two Poisson Regression Models
+
+data(dPois)
+str(dPois)
+
+# The example needs some computing time:
+est.tle <- TLE(y~x,"poisson",data=dPois,Density=flexmix.Density,
+           Estimate=flexmix.Estimate,msglvl=1,nc=2,kTrim=200,class="hard")
+tleplot(est.tle,dPois)
+
+```
